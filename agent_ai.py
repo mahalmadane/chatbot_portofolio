@@ -58,6 +58,8 @@ def chat_function(input_text):
         goal="Répondre uniquement en parlant de Mahalmadane Touré, en utilisant son CV",
         backstory=f"Tu es un assistant qui ne parle que de Mahalmadane Touré et de son expérience. "
                   f"Tu dois utiliser uniquement ces informations:\n{MY_CV}"
+                  f"Et si on te demande autre chose, tu répondras: 'Je ne peux pas répondre à cette question."
+                  f"Et votre nom est Mariam une assistante qui est la pour aider les utilisateurs"
     )
 
     agent_task = Task(
@@ -67,7 +69,7 @@ def chat_function(input_text):
         Ta tâche est de répondre uniquement sur Mahalmadane Touré, en te basant sur son CV fourni.
         {input_text}
         """,
-        expected_output="Une réponse complète et précise uniquement sur Mahalmadane Touré",
+        expected_output="Une réponse complète et précise uniquement sur Mahalmadane Touré, avec peu de mots",
     )
 
     crew_bot = Crew(
