@@ -1,26 +1,11 @@
-# Environnement virtuel
-env/
-venv/
-
-# Fichiers Python compilés
+.env
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Fichiers de configuration locaux
-.env
-*.sqlite3
-
-# Fichiers journaux
-*.log
-
-# Cache de l'IDE
-.vscode/
-.idea/
-
-# MacOS
+.Python
+env/
+venv/
+.venv/
+*.env
 .DS_Store
-
-# Railway / autres fichiers temporaires
-.railway/
