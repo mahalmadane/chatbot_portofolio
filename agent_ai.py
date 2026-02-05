@@ -127,7 +127,7 @@ def chat_function(input_text, context):
     
     # Premier message
     if not context or len(context) == 0:
-        return "Je suis Mariam. Je peux vous parler de Mahalmadane, ingénieur en IA. Que voulez-vous savoir ?"
+        return f"Je suis Mariam. {respond_to_first_question(input_text)}"
     
     # Construire le contexte de conversation
     conversation_context = ""
@@ -144,36 +144,36 @@ def chat_function(input_text, context):
     # Agent naturel
     agent_bot = Agent(
         llm=llm,
-    role="Mariam, assistante de Mahalmadane, et expert en Informatique et IA",
+        role="Mariam, assistante de Mahalmadane, et expert en Informatique et IA",
         goal="Répondre naturellement aux questions sur Mahalmadane. Utiliser le contexte pour être cohérent. Réponses courtes et précises.",
         backstory=f"""Je connais Mahalmadane et son parcours. Je parle simplement de ce que je sais.
 
-    Ce que je connais :
-    {MY_CV}
+Ce que je connais :
+{MY_CV}
 
-    Je réponds en 2-3 phrases maximum.
-    Je reste naturel, comme dans une conversation normale.
-    Si on doute de ses compétences, je montre simplement ce qu'il sait faire.
-    Si on le critique, je réponds comme une maman qui defend son enfant.
-    Et comme une maman, je repond sagemente aux questions.
-    Je parle de ses réalisations concrètes."""
+Je réponds en 2-3 phrases maximum.
+Je reste naturel, comme dans une conversation normale.
+Si on doute de ses compétences, je montre simplement ce qu'il sait faire.
+Si on le critique, je réponds comme une maman qui defend son enfant.
+Et comme une maman, je repond sagemente aux questions.
+Je parle de ses réalisations concrètes."""
     )
 
     # Task simple avec contexte
     task_description = f"""Conversation précédente :
-    {conversation_context if conversation_context else 'Premier échange'}
+{conversation_context if conversation_context else 'Premier échange'}
 
-    Question : {input_text}
+Question : {input_text}
 
-    Réponds en 2-3 phrases maximum. 
-    Sois naturel, pas besoin de présentation ou d'explications, sauf si on te demande.
-    Si la question est critique, réponds simplement avec ses compétences réelles.
-    Si c'est une question normale, donne l'information directement.
+Réponds en 2-3 phrases maximum. 
+Sois naturel, pas besoin de présentation ou d'explications, sauf si on te demande.
+Si la question est critique, réponds simplement avec ses compétences réelles.
+Si c'est une question normale, donne l'information directement.
 
-    Basé sur le CV seulement.
+Basé sur le CV seulement.
 
-    Réponds simplement à : "{input_text}"
-    """
+Réponds simplement à : "{input_text}"
+"""
     
     agent_task = Task(
         agent=agent_bot,
@@ -210,3 +210,47 @@ def chat_function(input_text, context):
         
     except Exception as e:
         return "Que voulez-vous savoir d'autre ?"
+
+
+def respond_to_first_question(question):
+    """Répond à la première question tout en se présentant"""
+    question_lower = question.lower().strip()
+    
+    # Liste des salutations simples
+    greetings = ["bonjour", "salut", "hello", "hi", "coucou", "hey", "yo"]
+    
+    # Si c'est juste une salutation
+    if question_lower in greetings or not question_lower:
+        return "Je peux vous parler de Mahalmadane, ingénieur en IA. Que voulez-vous savoir ?"
+    
+    # Sinon, répondre à la question
+    if "compéten" in question_lower or "sait faire" in question_lower or "maîtrise" in question_lower:
+        return "Je peux vous parler de Mahalmadane. Il maîtrise Python, Java, JavaScript, et travaille sur l'IA et le machine learning."
+    
+    elif "expérien" in question_lower or "travail" in question_lower or "emploi" in question_lower:
+        return "Je peux vous parler de Mahalmadane. Il est développeur chez AGETIC DSI, enseignant à l'UIE et formateur chez Mag School."
+    
+    elif "form" in question_lower or "étud" in question_lower or "diplô" in question_lower:
+        return "Je peux vous parler de Mahalmadane. Il a un Master en Informatique et IA obtenu en 2024, après une Licence en Sciences Informatiques."
+    
+    elif "projet" in question_lower or "réalisation" in question_lower:
+        return "Je peux vous parler de Mahalmadane. Il a développé une plateforme d'archives IA pour l'État malien et un système de gestion de baux."
+    
+    elif "ia" in question_lower or "intelligence" in question_lower:
+        return "Je peux vous parler de Mahalmadane. Il est spécialisé en IA avec un Master dans ce domaine et travaille sur des modèles avancés."
+    
+    elif "qui" in question_lower or "présente" in question_lower or "parle" in question_lower:
+        return "Mahalmadane est ingénieur IA et développeur full-stack. Il travaille sur des projets technologiques pour le gouvernement malien."
+    
+    else:
+        # Réponse générique pour toute autre question
+        return f"Mahalmadane est ingénieur IA. {get_generic_response(question)}"
+
+
+def get_generic_response(question):
+    """Donne une réponse générique basée sur le CV"""
+    # Analyser la question pour donner une réponse pertinente
+    if "?" in question:
+        return "Il a un parcours complet en informatique et IA, avec des projets concrets à son actif."
+    else:
+        return "C'est un professionnel compétent avec un Master en IA et plusieurs expériences professionnelles."
