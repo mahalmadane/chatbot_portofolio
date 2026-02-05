@@ -17,6 +17,7 @@ app.add_middleware(
 
 class ThemeInput(BaseModel):
     input: str
+    context:list
 
 @app.get("/")
 async def root():
@@ -33,12 +34,12 @@ async def health_check():
 @app.post("/chat")
 async def chat_endpoint(theme_input: ThemeInput):
     try:
-        raw_response = chat_function(theme_input.input)
+        raw_response = chat_function(theme_input.input,theme_input.context)
         return {"raw": raw_response}
     except Exception as e:
         return {"error": str(e)}
 
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8000))
+    port = int(os.environ.get("PORT", 8009))
     uvicorn.run(app, host="0.0.0.0", port=port)
