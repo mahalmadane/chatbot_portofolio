@@ -61,6 +61,10 @@ MY_CV = """IDENTITÉ
     - Accès rapide aux archives gouvernementales
     - Réponses fiables à partir de documents officiels
 
+    COURS ET FORMATIONS DONNEES par Mahalmadane Mahamane Touré
+    - Programmation python, c, html, css, javascript, java
+    - IA, Agent IA, Machine Learning, Deep Learning
+
     Modèles d'IA pour la Correction de Phrases
     - Utilisation de modèles Seq2Seq et Transformers
     - Agents basés sur LLM avec performance supérieure
