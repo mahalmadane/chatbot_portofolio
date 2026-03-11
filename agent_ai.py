@@ -27,12 +27,12 @@ MY_CV = """IDENTITÉ
 
     COMPÉTENCES TECHNIQUES
     • Langages: Python, C, C++, Java, JavaScript, HTML, CSS
-    • IA/ML: Machine Learning, Deep Learning, LLMs, Agents Intelligents
+    • IA/ML: Machine Learning, Deep Learning, LLMs, Agents Intelligents,scikit-learn, TensorFlow, Pandas, NumPy, matplotlib, seaborn
     • MLOps: ZenML, MLflow, Industrialisation de modèles
     • Bases de données: MySQL, PostgreSQL
     • Frontend: Vue.js, Next.js, Nuxt.js, React.js, Flutter
-    • Backend: Django, Django REST Framework, FastAPI
-    • Outils: CrewAI, Streamlit, Cybersécurité
+    • Backend: Django, Django REST Framework, FastAPI, Laravel
+    • Outils: CrewAI, Streamlit
 
     EXPÉRIENCES PROFESSIONNELLES
     Enseignant Supérieur à UIE (Novembre 2025 - Présent)
@@ -44,6 +44,7 @@ MY_CV = """IDENTITÉ
     - Formation en programmation et intelligence artificielle
     - Création de supports pédagogiques
     - Accompagnement personnalisé des apprenants
+    - Création des contenue digital
 
     Développeur chez AGETIC DSI (Mai 2025 - Présent)
     - Participation à des projets gouvernementaux
